@@ -23,16 +23,22 @@ def 강화_확률(단계):
     else:
         return 5  # 50단계 이후는 5%
 
+# 현재 단계와 성공 확률 표시
+단계 = st.session_state.cnt + 1
+확률 = 강화_확률(단계)
+
+st.write(f"현재 단계: {st.session_state.cnt}")
+st.write(f"다음 단계: {단계}")
+st.write(f"다음 단계 성공 확률: {확률:.2f}%")
+
 # 버튼 클릭 시 실행
 if st.button("plus"):
-    단계 = st.session_state.cnt + 1  # 다음 단계
     확률 = 강화_확률(단계)
     성공 = random.random() * 100 <= 확률  # 확률에 따라 성공 여부 결정
 
     if 성공:
         st.session_state.cnt = 단계  # 성공 시 단계 증가
         st.write(f"강화 성공! 현재 단계: {st.session_state.cnt}")
-        
     else:
         # 최고 기록 갱신
         if st.session_state.cnt > st.session_state.max_record:
