@@ -29,7 +29,7 @@ def 강화_확률(단계):
 
 st.write(f"현재 단계: {st.session_state.cnt}")
 st.write(f"다음 단계: {단계}")
-st.write(f"다음 단계 성공 확률: {확률:.2f}%")
+
 
 # 버튼 클릭 시 실행
 if st.button("plus"):
